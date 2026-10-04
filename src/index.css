@@ -167,6 +167,7 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--ember); outline
 .benefit-card-foot { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 22px; color: #d1a251; font: 400 7px/1.3 "DM Mono", monospace; letter-spacing: .1em; text-transform: uppercase; }
 .benefit-card-foot svg { flex: 0 0 auto; transition: transform .3s ease; }
 .benefit-card:hover .benefit-card-foot svg { transform: translate(3px,-3px); }
+.why-mobile-guide, .why-mobile-progress { display: none; }
 
 .enjoyment-section { position: relative; padding: 72px 0 88px; overflow: hidden; isolation: isolate; scroll-margin-top: 84px; background: linear-gradient(180deg, #0d1714, #08110f); border-top: 1px solid rgba(244,241,232,.1); border-bottom: 1px solid rgba(244,241,232,.1); }
 .enjoyment-section::before { content: ""; position: absolute; z-index: -1; top: -65%; left: 34%; width: 52vw; height: 52vw; max-width: 720px; max-height: 720px; border-radius: 50%; background: radial-gradient(circle, rgba(38,102,81,.16), transparent 68%); pointer-events: none; animation: atmosphere-pulse 12s ease-in-out infinite alternate; }
@@ -321,15 +322,23 @@ button:focus-visible, a:focus-visible { outline: 2px solid var(--ember); outline
   .purpose-card-head { font-size: 6px; letter-spacing: .08em; }
   .purpose-symbol { margin-top: 38px; font-size: 31px; }
   .purpose-card p { margin-top: 34px; font-size: clamp(22px, 6.4vw, 25px); }
-  .why-section { padding-top: 76px; padding-bottom: 89px; }
-  .why-heading { display: block; padding: 29px 0 28px; }
+  .why-section { width: 100%; padding: 76px clamp(18px, 5vw, 22px) 89px; overflow: hidden; }
+  .why-heading { display: block; padding: 29px 0 23px; }
   .why-heading h2 { font-size: clamp(38px, 10.5vw, 45px); }
-  .why-heading p { margin-top: 15px; font-size: 10px; }
-  .benefit-grid { grid-template-columns: 1fr; gap: 12px; perspective: none; }
-  .benefit-card, .benefit-card:nth-child(4), .benefit-card:nth-child(5) { grid-column: 1; min-height: 240px; padding: 19px; }
-  .benefit-card h3 { max-width: 330px; margin-top: 25px; font-size: 23px; }
-  .benefit-card p { max-width: 390px; }
-  .benefit-card-foot { padding-top: 20px; }
+  .why-heading p { max-width: 300px; margin-top: 15px; font-size: 10px; }
+  .why-mobile-guide { display: flex; align-items: center; justify-content: flex-end; gap: 7px; margin: 0 1px 9px; color: #a5aea3; font: 400 7px/1 "DM Mono", monospace; letter-spacing: .11em; }
+  .why-mobile-guide svg { color: var(--ember); animation: gallery-arrow-drift 1.7s ease-in-out infinite alternate; }
+  .benefit-grid { display: flex; width: calc(100% + 2 * clamp(18px, 5vw, 22px)); gap: 12px; margin-inline: calc(-1 * clamp(18px, 5vw, 22px)); padding: 10px clamp(18px, 5vw, 22px) 22px; overflow-x: auto; overflow-y: hidden; perspective: none; scrollbar-width: none; overscroll-behavior-x: contain; overscroll-behavior-y: auto; scroll-snap-type: x mandatory; scroll-padding-inline: clamp(18px, 5vw, 22px); touch-action: pan-x pan-y; cursor: grab; }
+  .benefit-grid::-webkit-scrollbar { display: none; }
+  .benefit-grid:active { cursor: grabbing; }
+  .benefit-grid:focus-visible { outline: 1px solid var(--ember); outline-offset: -2px; }
+  .benefit-card, .benefit-card:nth-child(4), .benefit-card:nth-child(5) { flex: 0 0 clamp(255px, 84vw, 340px); width: clamp(255px, 84vw, 340px); min-height: clamp(310px, 92vw, 360px); grid-column: auto; padding: clamp(19px, 5vw, 24px); scroll-snap-align: start; scroll-snap-stop: always; transform: none !important; translate: none !important; rotate: none !important; scale: 1 !important; will-change: auto; }
+  .benefit-card h3 { max-width: 290px; margin-top: clamp(25px, 8vw, 34px); font-size: clamp(22px, 6vw, 25px); }
+  .benefit-card p { max-width: 300px; font-size: 11px; }
+  .benefit-card-foot { padding-top: 20px; font-size: 7px; }
+  .why-mobile-progress { position: relative; display: block; height: 1px; margin: 3px 1px 0; overflow: hidden; background: rgba(244,241,232,.15); transform-origin: left center; }
+  .why-mobile-progress > span, .why-mobile-progress > i { position: absolute; inset: 0 auto 0 0; display: block; width: 100%; height: 100%; background: linear-gradient(90deg, var(--ember), var(--forest-bright)); transform-origin: left center; }
+  .why-mobile-progress > i { transform: scaleX(0); transition: transform .12s linear; }
   .enjoyment-section { padding: 54px 0 57px; }
   .enjoyment-heading, .enjoyment-progress { width: calc(100% - 2 * clamp(18px, 5vw, 22px)); }
   .enjoyment-heading { align-items: flex-end; gap: 14px; margin-bottom: 21px; }

@@ -337,7 +337,10 @@ function TiltCard({ pillar, index }) {
 
 function WhyUs() {
   const sectionRef = useRef(null);
+  const benefitRailRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: sectionRef, offset: ['start end', 'end start'] });
+  const { scrollXProgress } = useScroll({ container: benefitRailRef });
+  const benefitProgress = useSpring(scrollXProgress, { stiffness: 120, damping: 24 });
   const headingY = useTransform(scrollYProgress, [0, 1], [38, -38]);
   const headingRotate = useTransform(scrollYProgress, [0, 1], [-1.5, 1.5]);
   const reduceMotion = useReducedMotion();
@@ -348,7 +351,11 @@ function WhyUs() {
         <h2>Five things that<br />make the <em>difference.</em></h2>
         <p>The best part isn’t a place on a map. It’s who you meet along the way.</p>
       </motion.div>
-      <div className="benefit-grid">{pillars.map((pillar, index) => <TiltCard key={pillar.number} pillar={pillar} index={index} />)}</div>
+      <div className="why-mobile-guide" aria-hidden="true"><ArrowRight size={15} /> SWIPE TO EXPLORE</div>
+      <div className="benefit-grid" ref={benefitRailRef} role="region" aria-label="Why travel with Strangers and Stories" tabIndex={0}>
+        {pillars.map((pillar, index) => <TiltCard key={pillar.number} pillar={pillar} index={index} />)}
+      </div>
+      <div className="why-mobile-progress" aria-hidden="true"><span /><motion.i style={reduceMotion ? undefined : { scaleX: benefitProgress }} /></div>
     </section>
   );
 }
