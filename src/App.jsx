@@ -347,7 +347,7 @@ function WhyUs() {
       <motion.div className="why-heading" style={reduceMotion ? undefined : { y: headingY, rotate: headingRotate }}>
         <h2>Five things that<br />make the <em>difference.</em></h2>
         <p>The best part isn’t a place on a map. It’s who you meet along the way.</p>
-      </div>
+      </motion.div>
       <div className="benefit-grid">{pillars.map((pillar, index) => <TiltCard key={pillar.number} pillar={pillar} index={index} />)}</div>
     </section>
   );
